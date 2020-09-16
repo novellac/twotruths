@@ -43,3 +43,7 @@ To lint the project (analyze the code for potential warnings or errors), run thi
 ```
 yarn lint
 ```
+
+## 🌼Contributing
+
+Sooo I'm not soliciting contributions for the moment - it's a fun project thing for me and my squad to hack on together. But, you are welcome to fork this repository and make something you enjoy! If you do, [let me know how it goes](https://twitter.com/novelladev)!
