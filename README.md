@@ -10,7 +10,8 @@ My tech squad, [Cherry on Tech](https://cherryon.tech), is working on learning s
 
 ## Project setup
 
-- Fork the repository and clone it to your computer. _(Learn more about forking and cloning in this [Github guide](https://guides.github.com/activities/forking/)!)_
+- Fork the repository and clone it to your computer. _(Learn more about forking and cloning in this [Github guide](https://guides.github.com/activities/forking/).)_
+- If you don't have VueJS installed on your computer, you might need to do this. Checkout the [VueCLI](https://cli.vuejs.org/guide/installation.html) documentation and the [VueJS](https://vuejs.org/v2/guide/#Getting-Started) documentation for more information.
 - In the root of the project (right inside the `twotruths` folder), run the following command:
 
 ```
