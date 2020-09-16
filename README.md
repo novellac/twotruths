@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/73c4fa9a-b872-4a4c-9de8-1ea01dc5becb/deploy-status)](https://app.netlify.com/sites/twotruths/deploys)
+
 # 😊😳Two Truths, 🤥🤭One Lie Game!
 
 ## 🎯Goal
