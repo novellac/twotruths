@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <h2 class="text-4xl text-center">Which one is FALSE?</h2>
-    <p v-if="playingGame" class="text-center">
+    <p class="text-center">
       {{ resultMessage }}
     </p>
 
@@ -17,11 +17,8 @@
     </div>
 
     <!-- Results -->
-    <div class="flex justify-end">
-      <button
-        @click="resetGame()"
-        class="px-4 py-2 font-semibold text-white rounded bg-gradient-to-r from-teal-400 to-blue-500 hover:from-pink-500 hover:to-orange-500"
-      >
+    <div class="flex justify-center m-8">
+      <button @click="resetGame()" class="px-4 py-2 font-semibold underline">
         Do you want to <span v-if="playingGame">scrap it and</span> play again?
       </button>
     </div>
