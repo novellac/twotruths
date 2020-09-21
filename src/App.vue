@@ -4,11 +4,13 @@
 
     <!-- Cards -->
     <div v-if="playingGame">
-      <div v-for="(fact, index) in facts" :key="index">
-        <button @click="calculateVeracity(fact)">
-          {{ fact.msg }}
-        </button>
-      </div>
+      <Card
+        v-for="(fact, index) in facts"
+        :key="index"
+        :message="fact.msg"
+        @calculate="calculateVeracity(fact)"
+      >
+      </Card>
     </div>
 
     <!-- Results -->
@@ -38,7 +40,12 @@
 </template>
 
 <script>
+import Card from "@/components/Card.vue";
+
 export default {
+  components: {
+    Card,
+  },
   name: "App",
   data() {
     return {
