@@ -1,40 +1,26 @@
 <template>
   <div id="app">
-    <h2>Click the one that is FALSE</h2>
+    <h2 class="text-4xl text-center">Which one is FALSE?</h2>
+    <p class="text-center">
+      {{ resultMessage }}
+    </p>
 
     <!-- Cards -->
-    <div v-if="playingGame">
+    <div class="flex justify-center">
       <Card
         v-for="(fact, index) in facts"
         :key="index"
-        :message="fact.msg"
+        :fact="fact"
         @calculate="calculateVeracity(fact)"
       >
       </Card>
     </div>
 
     <!-- Results -->
-    <div>
-      <p v-if="playingGame">Remaining chances: {{ chances }}</p>
-      <p>{{ resultMessage }}</p>
-      <button v-if="!playingGame" @click="resetGame()">
-        Play again?
+    <div class="flex justify-center m-8">
+      <button @click="resetGame()" class="px-4 py-2 font-semibold underline">
+        Do you want to <span v-if="playingGame">scrap it and</span> play again?
       </button>
-    </div>
-
-    <div>
-      <h2>Roadmap</h2>
-      <ul>
-        <li>Clean this up. I'm sure I could improve the logic.</li>
-        <li>
-          Make it visual. There should be cards! And they should flip! And be
-          pretty!
-        </li>
-        <li>Put the data in an external file.</li>
-        <li>Make it possible to play more than one round.</li>
-        <li>Make it a tutorial, because why not.</li>
-        <li>Keep track of points earned over all rounds of play.</li>
-      </ul>
     </div>
   </div>
 </template>
@@ -57,20 +43,24 @@ export default {
         {
           msg: "I have a cat",
           veracity: false,
+          emoji: "🐈",
         },
         {
           msg: "I have a dog",
           veracity: true,
+          emoji: "🐶",
         },
         {
           msg: "I have a computer",
           veracity: true,
+          emoji: "💻",
         },
       ],
     };
   },
   created() {
     this.chances = this.maxChances;
+    this.resultMessage = `You have ${this.chances} chances.`;
   },
   methods: {
     calculateVeracity(guess) {
@@ -88,6 +78,7 @@ export default {
     resetGame() {
       this.chances = this.maxChances;
       this.playingGame = true;
+      this.resultMessage = null;
     },
   },
 };

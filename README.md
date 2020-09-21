@@ -6,6 +6,16 @@
 
 This project is meant to be a fun portfolio piece, which will demonstrate you know some VueJS, and introduce you to future friends and gigs.
 
+### 🚎Roadmap
+
+- Improve the logic.
+- Make it visual. There should be cards! And they should flip! And be
+  pretty! (the cards don't look _as_ terrible, but still not great)
+- Put the data in an external file.
+- Make it possible to play more than one round. (we're halfway there - still need to re-render the components)
+- Make it a tutorial, because why not.
+- Keep track of points earned over all rounds of play.
+
 ## 📖Background
 
 My tech squad, [Cherry on Tech](https://cherryon.tech), is working on learning several different technologies. Some of them are looking for jobs, and would like a way to introduce themselves to future friends, colleagues, and bosses. This seemed like a good way to demonstrate a knowledge of a technology, and have some fun in the process! I went first with VueJS, and they will be creating this same game in their chosen technologies, so stay tuned!
