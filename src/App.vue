@@ -1,24 +1,28 @@
 <template>
   <div id="app">
-    <h2>Click the one that is FALSE</h2>
+    <h2 class="text-4xl text-center">Which one is FALSE?</h2>
+    <p v-if="playingGame" class="text-center">
+      {{ resultMessage }}
+    </p>
 
     <!-- Cards -->
-    <div v-if="playingGame">
+    <div class="flex justify-center">
       <Card
         v-for="(fact, index) in facts"
         :key="index"
-        :message="fact.msg"
+        :fact="fact"
         @calculate="calculateVeracity(fact)"
       >
       </Card>
     </div>
 
     <!-- Results -->
-    <div>
-      <p v-if="playingGame">Remaining chances: {{ chances }}</p>
-      <p>{{ resultMessage }}</p>
-      <button v-if="!playingGame" @click="resetGame()">
-        Play again?
+    <div class="flex justify-end">
+      <button
+        @click="resetGame()"
+        class="px-4 py-2 font-semibold text-white rounded bg-gradient-to-r from-teal-400 to-blue-500 hover:from-pink-500 hover:to-orange-500"
+      >
+        Do you want to <span v-if="playingGame">scrap it and</span> play again?
       </button>
     </div>
 
@@ -57,20 +61,24 @@ export default {
         {
           msg: "I have a cat",
           veracity: false,
+          emoji: "🐈",
         },
         {
           msg: "I have a dog",
           veracity: true,
+          emoji: "🐶",
         },
         {
           msg: "I have a computer",
           veracity: true,
+          emoji: "💻",
         },
       ],
     };
   },
   created() {
     this.chances = this.maxChances;
+    this.resultMessage = `You have ${this.chances} chances.`;
   },
   methods: {
     calculateVeracity(guess) {
@@ -88,6 +96,7 @@ export default {
     resetGame() {
       this.chances = this.maxChances;
       this.playingGame = true;
+      this.resultMessage = null;
     },
   },
 };
