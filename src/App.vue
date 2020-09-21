@@ -25,21 +25,6 @@
         Do you want to <span v-if="playingGame">scrap it and</span> play again?
       </button>
     </div>
-
-    <div>
-      <h2>Roadmap</h2>
-      <ul>
-        <li>Clean this up. I'm sure I could improve the logic.</li>
-        <li>
-          Make it visual. There should be cards! And they should flip! And be
-          pretty!
-        </li>
-        <li>Put the data in an external file.</li>
-        <li>Make it possible to play more than one round.</li>
-        <li>Make it a tutorial, because why not.</li>
-        <li>Keep track of points earned over all rounds of play.</li>
-      </ul>
-    </div>
   </div>
 </template>
 
