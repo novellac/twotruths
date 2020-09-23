@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import json from "@/assets/data/facts.json";
 import Card from "@/components/Card.vue";
 
 export default {
@@ -39,23 +40,7 @@ export default {
       maxChances: 2,
       chances: null,
       resultMessage: null,
-      facts: [
-        {
-          msg: "I have a cat",
-          veracity: false,
-          emoji: "🐈",
-        },
-        {
-          msg: "I have a dog",
-          veracity: true,
-          emoji: "🐶",
-        },
-        {
-          msg: "I have a computer",
-          veracity: true,
-          emoji: "💻",
-        },
-      ],
+      facts: json.facts,
     };
   },
   created() {

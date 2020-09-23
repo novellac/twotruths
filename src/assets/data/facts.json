@@ -1,0 +1,22 @@
+{
+  "facts": [
+    {
+      "id": 1,
+      "msg": "I have a cat",
+      "veracity": false,
+      "emoji": "🐈"
+    },
+    {
+      "id": 2,
+      "msg": "I have a dog",
+      "veracity": true,
+      "emoji": "🐶"
+    },
+    {
+      "id": 3,
+      "msg": "I have a computer",
+      "veracity": true,
+      "emoji": "💻"
+    }
+  ]
+}
