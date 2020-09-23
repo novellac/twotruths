@@ -18,5 +18,12 @@
       "veracity": true,
       "emoji": "💻"
     }
-  ]
+  ],
+  "userMessages": {
+    "welcome": "Welcome!",
+    "chancesAvailable": "Chances available: {chances}"
+  },
+  "gameData": {
+    "maxChances": 2
+  }
 }

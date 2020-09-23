@@ -8,9 +8,10 @@
     <!-- Cards -->
     <div class="flex justify-center">
       <Card
-        v-for="(fact, index) in facts"
-        :key="index"
+        v-for="fact in facts"
+        :key="fact.id"
         :fact="fact"
+        :selected="selectedCards.includes(fact.id)"
         @calculate="calculateVeracity(fact)"
       >
       </Card>
@@ -18,6 +19,7 @@
 
     <!-- Results -->
     <div class="flex justify-center m-8">
+      <code>{{ selectedCards }}</code>
       <button @click="resetGame()" class="px-4 py-2 font-semibold underline">
         Do you want to <span v-if="playingGame">scrap it and</span> play again?
       </button>
@@ -26,7 +28,7 @@
 </template>
 
 <script>
-import json from "@/assets/data/facts.json";
+import json from "@/assets/data.json";
 import Card from "@/components/Card.vue";
 
 export default {
@@ -37,10 +39,11 @@ export default {
   data() {
     return {
       playingGame: true,
-      maxChances: 2,
+      maxChances: json.gameData.maxChances,
       chances: null,
       resultMessage: null,
       facts: json.facts,
+      selectedCards: [],
     };
   },
   created() {
@@ -49,6 +52,7 @@ export default {
   },
   methods: {
     calculateVeracity(guess) {
+      this.addToCardsArray(guess.id);
       if (guess.veracity === false) {
         this.resultMessage = `Yup, "${guess.msg}" is a total lie. You win!`;
         this.playingGame = false;
@@ -60,10 +64,17 @@ export default {
         this.playingGame = false;
       }
     },
+    addToCardsArray(cardId) {
+      if (!this.selectedCards.includes(cardId)) {
+        this.selectedCards.push(cardId);
+      }
+      return;
+    },
     resetGame() {
       this.chances = this.maxChances;
       this.playingGame = true;
-      this.resultMessage = null;
+      this.resultMessage = "Hi let's start over";
+      this.selectedCards = [];
     },
   },
 };
