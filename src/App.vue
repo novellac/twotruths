@@ -43,6 +43,7 @@ export default {
       chances: null,
       resultMessage: null,
       facts: json.facts,
+      userMessages: json.userMessages,
       selectedCards: [],
     };
   },
@@ -73,7 +74,7 @@ export default {
     resetGame() {
       this.chances = this.maxChances;
       this.playingGame = true;
-      this.resultMessage = "Hi let's start over";
+      this.resultMessage = `${this.userMessages.startOver} ${this.userMessages.chancesAvailable} ${this.maxChances}`;
       this.selectedCards = [];
     },
   },

@@ -21,7 +21,8 @@
   ],
   "userMessages": {
     "welcome": "Welcome!",
-    "chancesAvailable": "Chances available: {chances}"
+    "chancesAvailable": "Chances available:",
+    "startOver": "Sure, let's start over."
   },
   "gameData": {
     "maxChances": 2
