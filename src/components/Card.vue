@@ -9,8 +9,6 @@
   >
     {{ fact.msg }}
     {{ fact.emoji }}
-    {{ fact.id }}
-    {{ selected }}
     <slot />
   </button>
 </template>

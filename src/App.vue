@@ -11,17 +11,26 @@
         v-for="fact in facts"
         :key="fact.id"
         :fact="fact"
-        :selected="selectedCards.includes(fact.id)"
+        :selected="isSelected(fact.id)"
         @calculate="calculateVeracity(fact)"
-      >
-      </Card>
+      />
     </div>
 
     <!-- Results -->
     <div class="flex justify-center m-8">
-      <code>{{ selectedCards }}</code>
-      <button @click="resetGame()" class="px-4 py-2 font-semibold underline">
-        Do you want to <span v-if="playingGame">scrap it and</span> play again?
+      <button
+        @click="anotherRoundPlease()"
+        class="px-4 py-2 font-semibold underline"
+      >
+        Do you want to
+        <span v-if="playingGame && selectedCards.length > 0">scrap it and</span>
+        play another round?
+      </button>
+    </div>
+    <div>
+      <p>Total points: {{ totalPoints }}</p>
+      <button class="px-1 border-2 rounded-lg" @click="resetTally()">
+        Clear points
       </button>
     </div>
   </div>
@@ -45,6 +54,7 @@ export default {
       facts: json.facts,
       userMessages: json.userMessages,
       selectedCards: [],
+      totalPoints: 0,
     };
   },
   created() {
@@ -52,11 +62,15 @@ export default {
     this.resultMessage = `You have ${this.chances} chances.`;
   },
   methods: {
+    isSelected(factId) {
+      return this.selectedCards.includes(factId) || !this.playingGame;
+    },
     calculateVeracity(guess) {
       this.addToCardsArray(guess.id);
       if (guess.veracity === false) {
         this.resultMessage = `Yup, "${guess.msg}" is a total lie. You win!`;
         this.playingGame = false;
+        this.totalPoints += 1;
       } else if (this.chances >= this.maxChances) {
         this.chances -= 1;
         this.resultMessage = `Nope, actually "${guess.msg}" is the truth. You have ${this.chances} more chance(s).`;
@@ -69,13 +83,16 @@ export default {
       if (!this.selectedCards.includes(cardId)) {
         this.selectedCards.push(cardId);
       }
-      return;
     },
-    resetGame() {
+    anotherRoundPlease() {
       this.chances = this.maxChances;
       this.playingGame = true;
       this.resultMessage = `${this.userMessages.startOver} ${this.userMessages.chancesAvailable} ${this.maxChances}`;
       this.selectedCards = [];
+    },
+    resetTally() {
+      this.totalPoints = 0;
+      this.anotherRoundPlease();
     },
   },
 };
